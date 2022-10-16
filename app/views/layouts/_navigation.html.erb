@@ -1,0 +1,20 @@
+ <nav class="navbar navbar-dark bg-dark text-light ">
+  <!-- Navbar content -->
+
+ <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <%# <a class="nav-link active text-light" aria-current="page" href="#">hello</a> %>
+    <%= link_to 'HOME',root_path,class:'nav-link active text-light'%>
+  </li>
+  <li class="nav-item">
+    <%# <a class="nav-link text-light" href="#">Link</a> %>
+     <%= link_to 'INDEX',articles_path,class:'nav-link active text-light'%>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light disabled">Disabled</a>
+  </li>
+</ul>
+</nav>
