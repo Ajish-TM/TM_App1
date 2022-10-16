@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
 <thead><tr><th>Title</th>
 <th>Description</th>
 <th  colspan="3">Actions</th></thead>
@@ -16,4 +16,5 @@
 <% end %>
 </tbody>
 
-</table>
+</table> -->
+h
