@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
     end
     def create
         @article=Article.new(set_params)
+        @article.user = User.first
        # render plain:@article.inspect
        if @article.save
         flash[:notice]="Data Created."
