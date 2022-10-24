@@ -2,7 +2,7 @@
 
 <%if obj.errors.any?%>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <h4 class="alert-heading">Please follow following things</h4>
+  <h4 class="alert-heading">Please follow below errors in <%= obj.class.name.downcase%> form</h4>
   <ul>
 <% obj.errors.full_messages.each do |msg|%>
 <li><%=msg%></li>
