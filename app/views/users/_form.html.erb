@@ -14,7 +14,7 @@
                 <%= f.label :Password,class:"col-2 col-form-label"%>
                 <%= f.password_field :password,class:"col-10 form-control",placeholder:"Enter password"%>
             </div>
-            <div class="text-center"><%= f.submit "Sign Up", class:"btn btn-success mt-2 "%></div>
+            <div class="text-center"><%= f.submit(@user.new_record? ? "Sign Up": "Update Account", class:"btn btn-success mt-2 ")%></div>
 
         </div>
     <%end%>
