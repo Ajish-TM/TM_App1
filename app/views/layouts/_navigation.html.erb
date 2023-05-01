@@ -1,20 +1,73 @@
- <nav class="navbar navbar-dark bg-dark text-light ">
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+ <nav class="navbar navbar-dark bg-dark text-light d-flex justify-content-between">
   <!-- Navbar content -->
+
 
  <ul class="nav justify-content-center">
   <li class="nav-item">
     <%# <a class="nav-link active text-light" aria-current="page" href="#">hello</a> %>
     <%= link_to 'HOME',root_path,class:'nav-link active text-light'%>
   </li>
+
   <li class="nav-item">
+    <%= link_to 'Bloggers',users_path,class:'nav-link active text-light'%>
+  </li>
+
+
+  <div class="dropdown nav-item bg-dark text-white">
+  <button class="btn dropdown-toggle bg-dark text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Article
+  </button>
+  <div class="dropdown-menu bg-dark text-white" aria-labelledby="dropdownMenuButton">
+    <li class="nav-item">
     <%# <a class="nav-link text-light" href="#">Link</a> %>
-     <%= link_to 'INDEX',articles_path,class:'nav-link active text-light'%>
+     <%= link_to 'Articles',articles_path,class:'dropdown-item bg-dark text-white'%>
   </li>
+    <%if logged_in? %>
   <li class="nav-item">
-    <a class="nav-link text-light" href="#">Link</a>
+    <%= link_to 'Create Aricles', new_article_path,class:'dropdown-item bg-dark text-white'%>
   </li>
-  <li class="nav-item">
-    <a class="nav-link text-light disabled">Disabled</a>
-  </li>
+  <%end%>
+    <a class="dropdown-item bg-dark text-white" href="#">Something else here</a>
+  </div>
+</div>
 </ul>
+<ul class="nav justify-content-center">
+ 
+  <% if logged_in? %>
+<div class="dropdown nav-item bg-dark text-white">
+  <button class="btn dropdown-toggle bg-dark text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   <%="(Admin)" if current_user.admin?%> Profile[ <%= current_user.username%>]
+  </button>
+  <div class="dropdown-menu bg-dark text-white" aria-labelledby="dropdownMenuButton">
+    <li class="nav-item">
+    <%# <a class="nav-link text-light" href="#">Link</a> %>
+     <%= link_to 'View Your Profile',user_path(current_user),class:'dropdown-item bg-dark text-white'%>
+  </li>
+    <li class="nav-item">
+    <%= link_to 'Edit Your Profile',edit_user_path(current_user),class:'dropdown-item bg-dark text-white'%>
+  </li>
+    <%= link_to 'Delete Your Profile',user_path(current_user),class:'dropdown-item bg-dark text-danger',method: :delete,data:{confirm:"Are you Sure?"}%>
+  </div>
+</div>
+
+
+   
+   <li class="nav-item">
+    <%= link_to 'Logout',logout_path,class:'nav-link active text-light', method: :delete %>
+  </li>
+
+  <%else%>
+ <li class="nav-item">
+    <%= link_to 'Log in',login_path,class:'nav-link active text-light'%>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Sign Up',signup_path,class:'nav-link active text-light'%>
+  </li>
+  <%end%>
 </nav>

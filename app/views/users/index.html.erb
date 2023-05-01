@@ -1,0 +1,37 @@
+<div class="text-center"><h1>Bloggers</h1></div> 
+<div class="flickr_pagination">
+    <%= will_paginate @users, :container => false %>
+  </div>
+<div class="container">
+    <% @users.each do |user| %>
+    <div class="row">
+    <div class=" d-flex justify-content-center">
+    <div class="card text-center col-8 mb-2 shadow-sm  border-0">
+    <div class="card-header font-italic">
+       <em> by <%= link_to user.username,user %></em>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title "><%= link_to gravatar_for(user, size:120),user %></h5>
+        <p class="card-text"><%= pluralize(user.articles.count,"article") %></p>
+    <a><%= link_to 'View',user_path(user.id),class:"btn btn-success"%></a>
+    <% if logged_in? %>
+    <% if user==current_user%>
+      <a><%= link_to 'Edit',edit_user_path(user.id),class:"btn btn-warning "%></a>
+    <%end%>
+    <%if current_user.admin? %>
+      <a><%= link_to 'Delete User',user_path(user),class:"btn btn-danger ",method: :delete,data:{confirm:"Are you sure to delete this user"} %></a>
+    <%end%>
+    <%end%>
+    </div>
+    <div class="card-footer text-muted">
+        <small>Joined <%= time_ago_in_words(user.created_at)%> Ago</small>
+    </div>
+    </div>
+    </div>
+    </div>
+    <%end%>
+    </div>
+    <div class="flickr_pagination">
+    <%= will_paginate @users, :container => false %>
+  </div>
+
