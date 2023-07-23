@@ -1,0 +1,33 @@
+<h1 class="text-center">Category Lish</h1>
+<div class="flickr_pagination">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+ <div class="container">
+    <% @categories.each do |category| %>
+    <div class="row">
+    <div class=" d-flex justify-content-center">
+    <div class="card text-center col-4 mb-2 shadow-sm  border-0">
+   
+    <div class="card-body ">
+        <h5 class="card-title "><%= link_to category.name,category_path(category.id),class:" text-decoration-none text-success" %></h5>
+        <p class="card-text"><%= pluralize(category.articles.count,"article") %></p>
+    </div>
+    <div class="card-footer text-muted">
+        <small>Created <%= time_ago_in_words(category.created_at)%> Ago,</small>
+<small>Updated <%= time_ago_in_words(category.updated_at)%> Ago</small>
+    </div>
+    </div>
+    </div>
+    </div>
+    <%end%>
+    </div>
+    <div class="flickr_pagination">
+    <%= will_paginate @categories, :container => false %>
+  </div>
+
+
+
+
+
+
+  

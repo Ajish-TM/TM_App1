@@ -8,6 +8,11 @@
 
        <em> by <%= link_to article.user.username,user_path(article.user)  %></em>
        <%end%>
+        <% if article.categories.any? %>
+    <div class="mt-2 "><%= render article.categories %></div>
+    <% else %>
+    <div class="mt-2 text-secondary">No Categories have Add</div>
+    <% end %>
     </div>
     <div class="card-body">
         <h5 class="card-title "><%= link_to article.title,article_path(article.id),class:"text-black text-decoration-none" %></h5>
